@@ -27,7 +27,14 @@ function Container({ children, className = "" }) {
                         <option value="" disabled>
                             Selecione uma opção
                         </option>
+                        <option>Auxiliar Administrativo</option>
                         <option>Auxiliar de T.I</option>
+                        <option>Assistente Administrativo</option>
+                        <option>Assistente de RH</option>
+                        <option>Assistente de Transportes</option>
+                        <option>Assistente de T.I</option>
+                        <option>Assistente Financeiro</option>
+                        <option>Assistente de Supply Chain</option>
                         <option>Assistente de Logística</option>
                     </select>
                 </div>
