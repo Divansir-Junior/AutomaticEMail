@@ -1,0 +1,95 @@
+name: GitHub Events
+
+on:
+  push:
+    branches:
+      - "**"
+
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+      - closed
+
+jobs:
+  commits:
+    if: github.event_name == 'push'
+
+    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+
+    with:
+      title: "Commit"
+
+      message: |
+        Repositorio: ${{ github.repository }}
+        Branch: ${{ github.ref_name }}
+        Autor: ${{ github.actor }}
+
+        Commit:
+        ${{ github.event.head_commit.message }}
+
+        Link:
+        https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+
+    secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_COMMITS }}
+
+  pull_request:
+    if: github.event_name == 'pull_request'
+
+    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+
+    with:
+      title: "Pull Request"
+
+      message: |
+        Repositorio: ${{ github.repository }}
+
+        Titulo:
+        ${{ github.event.pull_request.title }}
+
+        Autor:
+        ${{ github.actor }}
+
+        Acao:
+        ${{ github.event.action }}
+
+        Link:
+        ${{ github.event.pull_request.html_url }}
+
+    secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_PR }}
+
+  issues:
+    if: github.event_name == 'issues'
+
+    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+
+    with:
+      title: "Issue"
+
+      message: |
+        Repositorio: ${{ github.repository }}
+
+        Titulo:
+        ${{ github.event.issue.title }}
+
+        Autor:
+        ${{ github.actor }}
+
+        Acao:
+        ${{ github.event.action }}
+
+        Link:
+        ${{ github.event.issue.html_url }}
+
+    secrets:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_ISSUES }}
