@@ -1,5 +1,7 @@
+import Container from './components/Container.jsx'
+
 function App() {
-  return null
+  return <Container />
 }
 
 export default App
