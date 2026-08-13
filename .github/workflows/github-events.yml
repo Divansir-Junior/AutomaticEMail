@@ -23,7 +23,7 @@ jobs:
   commits:
     if: github.event_name == 'push'
 
-    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+    uses: ./.github/workflows/notify-discord.yml
 
     with:
       title: "Commit"
@@ -45,7 +45,7 @@ jobs:
   pull_request:
     if: github.event_name == 'pull_request'
 
-    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+    uses: ./.github/workflows/notify-discord.yml
 
     with:
       title: "Pull Request"
@@ -71,7 +71,7 @@ jobs:
   issues:
     if: github.event_name == 'issues'
 
-    uses: Divansir-Junior/github_Notifications/.github/workflows/notify-discord.yml@main
+    uses: ./.github/workflows/notify-discord.yml
 
     with:
       title: "Issue"
