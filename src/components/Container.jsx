@@ -42,7 +42,7 @@ function Container({ children, className = "" }) {
 
     return (
         <div
-            className={`w-full max-w-4xl rounded-3xl border-2 border-red-600/70 bg-zinc-950 p-8 shadow-[0_0_60px_rgba(220,38,38,0.15)] ${className}`.trim()}
+            className={`w-full max-w-4xl rounded-sm border-2 border-red-600/70 bg-zinc-950 p-8 shadow-[0_0_60px_rgba(220,38,38,0.15)] ${className}`.trim()}
         >
             <main className="w-full">
                 {children}
@@ -57,7 +57,7 @@ function Container({ children, className = "" }) {
                     <select
                         id="cargo"
                         defaultValue=""
-                        className="w-full cursor-pointer rounded-xl border border-red-600/50 bg-black px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
+                        className="w-full cursor-pointer rounded-sm border-2 border-red-600/50 bg-black px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
                     >
                         <option value="" disabled>
                             Selecione uma opção
@@ -82,14 +82,14 @@ function Container({ children, className = "" }) {
                     type="button"
                     onClick={handleSend}
                     disabled={loading}
-                    className="rounded-xl bg-red-600 px-6 py-3 font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded-sm bg-red-600 px-6 py-3 font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {loading ? "Processando..." : "Enviar E-mails"}
                 </button>
                 <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="rounded-xl border border-red-600 bg-black px-6 py-3 font-semibold text-white transition hover:bg-red-600"
+                    className="rounded-sm border-2 border-red-600 bg-black px-6 py-3 font-semibold text-white transition hover:bg-red-600"
                 >
                     Adicionar imagem
                 </button>

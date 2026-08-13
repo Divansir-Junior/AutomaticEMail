@@ -41,7 +41,7 @@ function ExtractedData({ data }) {
                 {emailLink && (
                     <a
                         href={emailLink}
-                        className="flex items-center gap-2 rounded-xl border border-red-600 bg-black px-3 py-1.5 font-semibold text-white transition hover:bg-red-600"
+                        className="flex items-center gap-2 rounded-sm border-2 border-red-600 bg-black px-3 py-1.5 font-semibold text-white transition hover:bg-red-600"
                     >
                         <GmailIcon />
                         Email
@@ -58,7 +58,7 @@ function ExtractedData({ data }) {
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 rounded-xl bg-red-600 px-3 py-1.5 font-semibold text-white transition hover:bg-red-700"
+                        className="flex items-center gap-2 rounded-sm bg-red-600 px-3 py-1.5 font-semibold text-white transition hover:bg-red-700"
                     >
                         <WhatsAppIcon />
                         Mensagem
