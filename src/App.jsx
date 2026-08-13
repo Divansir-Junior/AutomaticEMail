@@ -1,9 +1,8 @@
-import './App.css'
 import Container from './components/Container.jsx'
 
 function App() {
   return (
-    <main className="app">
+    <main className="flex min-h-screen items-center justify-center">
       <Container />
     </main>
   )
