@@ -34,14 +34,14 @@ function ExtractedData({ data }) {
     return (
         <div className="mt-6 flex flex-col gap-3">
             <div className="flex items-center gap-3">
-                <p className="text-gray-800">
-                    <span className="font-semibold">Email:</span>{" "}
+                <p className="text-white">
+                    <span className="font-semibold text-red-500">Email:</span>{" "}
                     {data.email || "não encontrado"}
                 </p>
                 {emailLink && (
                     <a
                         href={emailLink}
-                        className="flex items-center gap-2 rounded-lg bg-red-500 px-3 py-1.5 font-semibold text-white transition hover:bg-red-600"
+                        className="flex items-center gap-2 rounded-xl border border-red-600 bg-black px-3 py-1.5 font-semibold text-white transition hover:bg-red-600"
                     >
                         <GmailIcon />
                         Email
@@ -49,8 +49,8 @@ function ExtractedData({ data }) {
                 )}
             </div>
             <div className="flex items-center gap-3">
-                <p className="text-gray-800">
-                    <span className="font-semibold">Telefone:</span>{" "}
+                <p className="text-white">
+                    <span className="font-semibold text-red-500">Telefone:</span>{" "}
                     {data.phone || "não encontrado"}
                 </p>
                 {whatsappLink && (
@@ -58,7 +58,7 @@ function ExtractedData({ data }) {
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 rounded-lg bg-green-500 px-3 py-1.5 font-semibold text-white transition hover:bg-green-600"
+                        className="flex items-center gap-2 rounded-xl bg-red-600 px-3 py-1.5 font-semibold text-white transition hover:bg-red-700"
                     >
                         <WhatsAppIcon />
                         Mensagem
