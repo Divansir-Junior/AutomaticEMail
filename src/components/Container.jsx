@@ -39,12 +39,18 @@ function Container({ children, className = "" }) {
                     </select>
                 </div>
             </main>
-            <footer>
+            <footer className="flex gap-4">
                 <button
                     type="button"
                     className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
                 >
                     Enviar E-mails
+                </button>
+                <button
+                    type="button"
+                    className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+                >
+                    Adicionar imagem
                 </button>
             </footer>
         </div>
