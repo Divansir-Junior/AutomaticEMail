@@ -5,5 +5,5 @@ export function extractEmail(text) {
 
 export function extractPhone(text) {
     const match = text.match(/\+?\d[\d\s().-]{8,}\d/);
-    return match ? match[0].replace(/\s+/g, "") : "";
+    return match ? match[0].replace(/[^\d+]/g, "") : "";
 }
