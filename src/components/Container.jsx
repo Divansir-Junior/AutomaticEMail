@@ -6,7 +6,7 @@ import { extractEmail, extractPhone } from "../utils/extractors.js";
 import useImageToText from "../hooks/useImageToText.js";
 import sendEmail from "../services/emailService.js";
 import { emailSubject } from "../constants/email.js";
-import { body } from "../constants/message.js";
+import { emailBody } from "../constants/message.js";
 
 function Container({ children, className = "" }) {
     const fileInputRef = useRef(null);
@@ -40,7 +40,7 @@ function Container({ children, className = "" }) {
                 return;
             }
 
-            sendEmail(email, emailSubject(cargo), body(recognizedText, cargo));
+            sendEmail(email, emailSubject(cargo), emailBody(recognizedText, cargo));
         } catch (error) {
             console.error("Erro ao processar a imagem:", error);
             alert("Ocorreu um erro ao processar a imagem.");

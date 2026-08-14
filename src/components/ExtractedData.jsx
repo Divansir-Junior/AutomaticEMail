@@ -1,5 +1,5 @@
 import { buildMailtoLink } from "../services/emailService.js";
-import { whatsappMessage } from "../constants/email.js";
+import { whatsappBody } from "../constants/message.js";
 
 function WhatsAppIcon() {
     return (
@@ -29,7 +29,7 @@ function ExtractedData({ data, cargo = "" }) {
     if (!data) return null;
 
     const whatsappLink = data.phone
-        ? `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage(cargo))}`
+        ? `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappBody(cargo))}`
         : null;
 
     const emailLink = data.email ? buildMailtoLink(data.email) : null;

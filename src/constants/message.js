@@ -12,14 +12,25 @@ const JOB_MESSAGES = {
     "Assistente de Logística": "Tenho experiência com logística, movimentação de mercadorias, controle de estoque e expedição, com foco em agilidade e organização.",
 };
 
-export function body(text, job) {
+function buildJobParagraph(job) {
     const jobMessage = JOB_MESSAGES[job];
-    const jobParagraph = jobMessage ? `\n${jobMessage}\n\n` : "\n";
+    return jobMessage ? `\n${jobMessage}\n\n` : "\n";
+}
 
+export function whatsappBody(job) {
+    return `Prezados(as),
+
+Meu nome é ${CANDIDATE_NAME} e estou em busca de uma oportunidade profissional. Estou interessado(a) na vaga de ${job}.
+${buildJobParagraph(job)}Posso encaminhar meu currículo e portfólio, e meu LinkedIn está disponível em: ${CANDIDATE_LINKEDIN}
+
+Fico à disposição para conversarmos. Agradeço desde já pela atenção.`;
+}
+
+export function emailBody(text, job) {
     return `Prezados(as),
 
 Meu nome é ${CANDIDATE_NAME} e estou em busca de uma oportunidade profissional. Venho por meio deste e-mail apresentar minha candidatura à vaga de ${job}.
-${jobParagraph}Segue abaixo o conteúdo de referência:
+${buildJobParagraph(job)}Segue abaixo o conteúdo de referência:
 
 ${text}
 
