@@ -5,7 +5,7 @@ import { extractTextFromImage } from "../services/ocrService.js";
 import { extractEmail, extractPhone } from "../utils/extractors.js";
 import useImageToText from "../hooks/useImageToText.js";
 import sendEmail from "../services/emailService.js";
-import { EMAIL_SUBJECT } from "../constants/email.js";
+import { emailSubject } from "../constants/email.js";
 import { body } from "../constants/message.js";
 
 function Container({ children, className = "" }) {
@@ -40,7 +40,7 @@ function Container({ children, className = "" }) {
                 return;
             }
 
-            sendEmail(email, EMAIL_SUBJECT, body(recognizedText, cargo));
+            sendEmail(email, emailSubject(cargo), body(recognizedText, cargo));
         } catch (error) {
             console.error("Erro ao processar a imagem:", error);
             alert("Ocorreu um erro ao processar a imagem.");
@@ -84,7 +84,7 @@ function Container({ children, className = "" }) {
                     </select>
                 </div>
 
-                <ExtractedData data={data} />
+                <ExtractedData data={data} cargo={cargo} />
             </main>
 
             <footer className="mt-8 flex gap-4">

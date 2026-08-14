@@ -1,4 +1,7 @@
-export const EMAIL_SUBJECT = "Oportunidade de Emprego";
+export function emailSubject(job) {
+    return `Candidatura à vaga de ${job}`;
+}
 
-export const WHATSAPP_MESSAGE =
-    "Olá! Gostaríamos de conversar com você sobre uma oportunidade em nossa empresa. Fico à disposição!";
+export function whatsappMessage(job) {
+    return `Olá! Meu nome é Divansir Junior e estou em busca de uma vaga de ${job}. Gostaria de saber se vocês estão com oportunidades abertas e, se possível, conversarmos sobre minha candidatura.`;
+}
