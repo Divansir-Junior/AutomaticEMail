@@ -6,7 +6,8 @@ import { extractEmail, extractPhone } from "../utils/extractors.js";
 import useImageToText from "../hooks/useImageToText.js";
 import sendEmail from "../services/emailService.js";
 import { emailSubject } from "../constants/email.js";
-import { emailBody } from "../constants/message.js";
+import { emailBody, whatsappBody } from "../constants/message.js";
+import { CARGOS } from "../constants/cargos.js";
 
 function Container({ children, className = "" }) {
     const fileInputRef = useRef(null);
@@ -72,17 +73,24 @@ function Container({ children, className = "" }) {
                         <option value="" disabled>
                             Selecione uma opção
                         </option>
-                        <option>Auxiliar Administrativo</option>
-                        <option>Auxiliar de T.I</option>
-                        <option>Assistente Administrativo</option>
-                        <option>Assistente de RH</option>
-                        <option>Assistente de Transportes</option>
-                        <option>Assistente de T.I</option>
-                        <option>Assistente Financeiro</option>
-                        <option>Assistente de Supply Chain</option>
-                        <option>Assistente de Logística</option>
+                        {CARGOS.map((item) => (
+                            <option key={item} value={item}>
+                                {item}
+                            </option>
+                        ))}
                     </select>
                 </div>
+
+                {cargo && (
+                    <div className="mt-6">
+                        <label className="mb-2 block text-sm font-medium text-red-500">
+                            Prévia da mensagem ({cargo})
+                        </label>
+                        <pre className="whitespace-pre-wrap rounded-sm border-2 border-red-600/30 bg-black p-4 text-sm leading-relaxed text-white/80">
+                            {whatsappBody(cargo)}
+                        </pre>
+                    </div>
+                )}
 
                 <ExtractedData data={data} cargo={cargo} />
             </main>
