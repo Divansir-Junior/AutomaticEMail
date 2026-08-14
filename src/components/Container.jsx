@@ -4,11 +4,15 @@ import ExtractedData from "./ExtractedData.jsx";
 import { extractTextFromImage } from "../services/ocrService.js";
 import { extractEmail, extractPhone } from "../utils/extractors.js";
 import useImageToText from "../hooks/useImageToText.js";
+import sendEmail from "../services/emailService.js";
+import { EMAIL_SUBJECT } from "../constants/email.js";
+import { body } from "../constants/message.js";
 
 function Container({ children, className = "" }) {
     const fileInputRef = useRef(null);
     const { image, setImage, setText, loading, setLoading } = useImageToText();
     const [data, setData] = useState(null);
+    const [cargo, setCargo] = useState("");
 
     const handleFileSelect = (file) => {
         setImage(file);
@@ -17,7 +21,7 @@ function Container({ children, className = "" }) {
 
     const handleSend = async () => {
         if (!image) {
-            console.log("Nenhuma imagem selecionada");
+            alert("Selecione uma imagem para extrair o e-mail.");
             return;
         }
 
@@ -31,10 +35,15 @@ function Container({ children, className = "" }) {
 
             setData({ email, phone });
 
-            console.log(`Email: ${email || "nao encontrado"}`);
-            console.log(`Telefone: ${phone || "nao encontrado"}`);
+            if (!email) {
+                alert("Não foi possível encontrar um e-mail na imagem.");
+                return;
+            }
+
+            sendEmail(email, EMAIL_SUBJECT, body(recognizedText, cargo));
         } catch (error) {
             console.error("Erro ao processar a imagem:", error);
+            alert("Ocorreu um erro ao processar a imagem.");
         } finally {
             setLoading(false);
         }
@@ -56,7 +65,8 @@ function Container({ children, className = "" }) {
                     </label>
                     <select
                         id="cargo"
-                        defaultValue=""
+                        value={cargo}
+                        onChange={(e) => setCargo(e.target.value)}
                         className="w-full cursor-pointer rounded-sm border-2 border-red-600/50 bg-black px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-600"
                     >
                         <option value="" disabled>

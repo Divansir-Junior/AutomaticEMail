@@ -1,3 +1,6 @@
+import { buildMailtoLink } from "../services/emailService.js";
+import { WHATSAPP_MESSAGE } from "../constants/email.js";
+
 function WhatsAppIcon() {
     return (
         <svg
@@ -26,10 +29,10 @@ function ExtractedData({ data }) {
     if (!data) return null;
 
     const whatsappLink = data.phone
-        ? `https://wa.me/${data.phone.replace(/\D/g, "")}`
+        ? `https://wa.me/${data.phone.replace(/\D/g, "")}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
         : null;
 
-    const emailLink = data.email ? `mailto:${data.email}` : null;
+    const emailLink = data.email ? buildMailtoLink(data.email) : null;
 
     return (
         <div className="mt-6 flex flex-col gap-3">
